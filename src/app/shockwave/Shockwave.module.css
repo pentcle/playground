@@ -4,10 +4,10 @@
     align-items: center;
     height: 100vh;
     background:
-            url('/beam.svg') no-repeat center, /* Add beam.svg on top */
-            url('/tint.jpg') no-repeat; /* Keep tint.jpg as it is */
-    background-size: 800% 100%, cover; /* Beam image scaled to 200% width, tint covers page */
-    background-position: center, left top; /* Center the beam image, but leave tint.jpg unchanged */
+            url('/beam.svg') no-repeat center,
+            url('/tint.jpg') no-repeat;
+    background-size: cover, cover;
+    background-position: center, left top;
     position: relative;
     overflow: hidden;
     transition: filter 0.3s ease;
@@ -53,10 +53,10 @@
             rgba(0, 197, 210, 0.5) 50%, /* Gradual transition - 00C5D2 */
             rgba(255, 232, 64, 0.5) 75%, /* Outer color - FFE840 */
             rgba(134, 78, 251, 0.5) 100% /* Outer edge color - 864EFB */);
-    box-shadow: 0 0 40px 20px rgba(134, 78, 251, 0.5); /* Outer glow */
+    box-shadow: 0 0 40px 20px rgba(134, 78, 251, 0.5);
     transform: translate(-50%, -50%);
     opacity: 0;
-    filter: blur(15px); /* Applying blur */
+    filter: blur(15px);
     transition: opacity 0.3s ease, width 1s ease, height 1s ease-out;
     z-index: 0;
 }
