@@ -1,0 +1,108 @@
+.pageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:
+            url('/beam.svg') no-repeat center, /* Add beam.svg on top */
+            url('/tint.jpg') no-repeat; /* Keep tint.jpg as it is */
+    background-size: 800% 100%, cover; /* Beam image scaled to 200% width, tint covers page */
+    background-position: center, left top; /* Center the beam image, but leave tint.jpg unchanged */
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+}
+
+.warping::before {
+    width: 800%;
+    height: 800%;
+    opacity: 0.8;
+    box-shadow: 0 0 100px 50px rgba(134, 78, 251, 0.7);
+    animation: colorExpand 6s ease-out;
+}
+
+@keyframes colorExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.15;
+    }
+    50% {
+        width: 500%;
+        height: 500%;
+        opacity: 0.25;
+    } 100% {
+        width: 800%;
+        height: 800%;
+        opacity: 0.15;
+    }
+}
+
+.pageContainer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background:
+            radial-gradient(circle at center,
+            rgba(242, 242, 242, 0.1) 0%, /* Inner color - F2F2F2 */
+            rgba(255, 105, 170, 0.5) 25%, /* Mid color - FF69AA */
+            rgba(0, 197, 210, 0.5) 50%, /* Gradual transition - 00C5D2 */
+            rgba(255, 232, 64, 0.5) 75%, /* Outer color - FFE840 */
+            rgba(134, 78, 251, 0.5) 100% /* Outer edge color - 864EFB */);
+    box-shadow: 0 0 40px 20px rgba(134, 78, 251, 0.5); /* Outer glow */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    filter: blur(15px); /* Applying blur */
+    transition: opacity 0.3s ease, width 1s ease, height 1s ease-out;
+    z-index: 0;
+}
+
+.btnContainer {
+    position: relative;
+    z-index: 1;
+}
+
+.warping {
+    filter: url(#warp);
+}
+
+.pageContainer.active.fade-outer::before {
+    background: radial-gradient(circle at center,
+    rgba(242, 242, 242, 0.5) 0%,
+    rgba(255, 105, 170, 0.5) 25%,
+    rgba(0, 197, 210, 0) 50%,
+    rgba(255, 232, 64, 0) 75%,
+    rgba(134, 78, 251, 0) 100%
+    );
+    transition: background 1s ease-out;
+}
+
+.pageContainer.active.fade-center::before {
+    background: radial-gradient(circle at center,
+    rgba(242, 242, 242, 0) 0%,
+    rgba(255, 105, 170, 0) 25%,
+    rgba(0, 197, 210, 0) 50%,
+    rgba(255, 232, 64, 0) 75%,
+    rgba(134, 78, 251, 0) 100%
+    );
+    transition: background 1s ease-out;
+}
+
+.btn {
+    width: 145px;
+    height: 44px;
+    background: black;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    border: none;
+    padding: 0;
+    color: white;
+    line-height: 44px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+}
