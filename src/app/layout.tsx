@@ -14,8 +14,8 @@ const berkeleyBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "pentacle",
-  description: "creative direction and product design",
+  title: "code playground",
+  description: "pentacle code playground",
 };
 
 export default function RootLayout({
