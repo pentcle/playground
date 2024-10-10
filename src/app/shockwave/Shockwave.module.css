@@ -13,6 +13,10 @@
     transition: filter 0.3s ease;
 }
 
+.warping {
+    filter: url(#warp);
+}
+
 .warping::before {
     width: 800%;
     height: 800%;
@@ -66,8 +70,19 @@
     z-index: 1;
 }
 
-.warping {
-    filter: url(#warp);
+.btn {
+    width: 145px;
+    height: 44px;
+    background: black;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    border: none;
+    padding: 0;
+    color: white;
+    line-height: 44px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
 }
 
 .pageContainer.active.fade-outer::before {
@@ -90,19 +105,4 @@
     rgba(134, 78, 251, 0) 100%
     );
     transition: background 1s ease-out;
-}
-
-.btn {
-    width: 145px;
-    height: 44px;
-    background: black;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 0.8rem;
-    border: none;
-    padding: 0;
-    color: white;
-    line-height: 44px;
-    cursor: pointer;
-    transition: background-color 0.5s ease-out;
 }
