@@ -6,7 +6,7 @@ export default function ShockwavePage() {
     return (
         <div className="relative">
             <Head>
-                <title>Shockwave Button Demo</title>
+                <title>Shockwave button demo</title>
             </Head>
             <ShockwaveButton />
             <p className="absolute bottom-4 right-4 z-30">
