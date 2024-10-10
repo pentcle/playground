@@ -1,5 +1,5 @@
 hello
 
-yarn install 
+$ yarn install 
 
-yarn dev
+$ yarn dev
