@@ -10,8 +10,9 @@
 }
 
 @keyframes glowFadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+    100% { opacity: 0.5; transform: scale(1.25); }
 }
 
 .fadeIn {
@@ -21,11 +22,12 @@
 .backgroundGlow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(255,0,0,0.8) 0%, rgba(255,0,0,0.2) 70%, rgba(255,0,0,0) 100%);
+    background: radial-gradient(circle at center, var(--glow-color, rgba(0, 0, 0, 0.8)) 0%, var(--glow-fade-color, rgba(0, 0, 0, 0.2)) 70%, rgba(0, 0, 0, 0) 100%);
     filter: blur(20px);
     opacity: 0;
     pointer-events: none;
     z-index: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .glowFadeIn {
@@ -33,5 +35,6 @@
 }
 
 .glowFadeOut {
-    animation: glowFadeOut 0.5s ease-in-out forwards;
+    animation: glowFadeOut 2s ease-in-out forwards; /* Increased duration from 0.5s to 1s */
 }
+

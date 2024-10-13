@@ -7,9 +7,16 @@ import styles from "./Carousel.module.css";
 
 export default function CarouselPage() {
     const [activeTab, setActiveTab] = useState("techne");
-    const [imagePaths, setImagePaths] = useState<{[key: string]: string[]}>({});
+    const [imagePaths, setImagePaths] = useState<{ [key: string]: string[] }>({});
     const [isLoading, setIsLoading] = useState(true);
-    const [showGlow, setShowGlow] = useState(false); // Initialize showGlow
+    const [showGlow, setShowGlow] = useState(false);
+
+    const tabColors: { [key: string]: string } = {
+        techne: "rgba(219, 241, 247, 0.8)",
+        transmission: "rgba(230, 236, 117, 0.8)",
+        community: "rgba(238, 166, 208, 0.8)",
+        dominion: "rgba(227, 111, 76, 0.8)",
+    };
 
     useEffect(() => {
         const fetchImagePaths = async () => {
@@ -22,11 +29,10 @@ export default function CarouselPage() {
     }, []);
 
     useEffect(() => {
-        // Toggle the glow effect when the active tab changes
         setShowGlow(true);
-        const timeout = setTimeout(() => setShowGlow(false), 1000); // Example: glow fades out after 1 second
+        const timeout = setTimeout(() => setShowGlow(false), 1000);
 
-        return () => clearTimeout(timeout); // Cleanup timeout on unmount or when activeTab changes
+        return () => clearTimeout(timeout);
     }, [activeTab]);
 
     if (isLoading) {
@@ -37,7 +43,13 @@ export default function CarouselPage() {
 
     return (
         <article className="h-screen flex flex-col relative overflow-hidden bg-[#20282F]">
-            <div className={`${styles.backgroundGlow} ${showGlow ? styles.glowFadeIn : styles.glowFadeOut}`}></div>
+            <div
+                className={`${styles.backgroundGlow} ${showGlow ? styles.glowFadeIn : styles.glowFadeOut}`}
+                style={{
+                    "--glow-color": tabColors[activeTab],
+                    "--glow-fade-color": tabColors[activeTab].replace("0.8", "0.2"),
+                } as React.CSSProperties}
+            ></div>
             <div className="flex-grow flex flex-col overflow-hidden p-4 relative z-10">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col h-full w-full">
                     <TabsList className="w-full flex justify-center shrink-0 mb-4">
