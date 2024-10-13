@@ -9,7 +9,7 @@ import {
 
 export function CarouselComponent({imagePaths}: { imagePaths: string[] }) {
     return (
-        <div className="h-full w-full flex items-center justify-center">
+        <div className="h-full w-full flex items-center justify-center pb-16 sm:pb-0">
             <Carousel className="w-full max-w-5xl flex flex-col">
                 <CarouselContent>
                     {imagePaths.sort().map((imagePath, index) => (
