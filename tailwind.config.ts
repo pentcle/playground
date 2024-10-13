@@ -9,6 +9,7 @@ const config: Config = {
     darkMode: ["class"],
     theme: {
         extend: {
+
             colors: {
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
@@ -58,7 +59,8 @@ const config: Config = {
             }
         }
     },
-    plugins: [("tailwindcss-animate")]
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    plugins: [require('tailwindcss-animate')],
 };
 
 export default config;
