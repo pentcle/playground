@@ -50,7 +50,7 @@ export default function CarouselPage() {
                     "--glow-fade-color": tabColors[activeTab].replace("0.8", "0.2"),
                 } as React.CSSProperties}
             ></div>
-            <div className="flex-grow flex flex-col overflow-hidden p-4 relative z-10">
+            <div className="flex-grow flex flex-col overflow-hidden p-4 relative z-10 py-8">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col h-full w-full">
                     <TabsList className="w-full flex justify-center shrink-0 mb-4">
                         {tabs.map((tab) => (
