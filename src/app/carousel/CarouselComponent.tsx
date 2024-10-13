@@ -19,7 +19,7 @@ export function CarouselComponent({imagePaths}: { imagePaths: string[] }) {
                                 <img
                                     src={imagePath}
                                     alt={`Slide ${index + 1}`}
-                                    className="absolute inset-0 w-full h-full object-contain rounded-xl"
+                                    className="absolute inset-0 w-full h-full object-contain"
                                 />
                             </div>
                         </CarouselItem>
