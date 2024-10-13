@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { CarouselComponent } from "./CarouselComponent";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -7,7 +6,7 @@ import { loadAllImagePaths } from "./utils/loadImages";
 import styles from "./Carousel.module.css";
 
 export default function CarouselPage() {
-    const [activeTab, setActiveTab] = useState("comic01");
+    const [activeTab, setActiveTab] = useState("techne");
     const [imagePaths, setImagePaths] = useState<{[key: string]: string[]}>({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -25,28 +24,31 @@ export default function CarouselPage() {
         return <div>Loading...</div>;
     }
 
+    const tabs = ["techne", "transmission", "community", "dominion"];
+
     return (
         <article className="h-screen flex flex-col">
             <div className="flex-grow flex flex-col overflow-hidden p-4">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col h-full w-full">
                     <TabsList className="w-full flex justify-center shrink-0 mb-4">
-                        <TabsTrigger value="comic01">Comic 01</TabsTrigger>
-                        <TabsTrigger value="comic02">Comic 02</TabsTrigger>
-                        <TabsTrigger value="comic03">Comic 03</TabsTrigger>
-                        <TabsTrigger value="comic04">Comic 04</TabsTrigger>
+                        {tabs.map((tab) => (
+                            <TabsTrigger key={tab} value={tab} className="capitalize">
+                                {tab}
+                            </TabsTrigger>
+                        ))}
                     </TabsList>
                     <div className="flex-grow overflow-hidden relative">
-                        {['comic-01', 'comic-02', 'comic-03', 'comic-04'].map((comic, index) => (
+                        {tabs.map((tab) => (
                             <TabsContent
-                                key={comic}
-                                value={`comic0${index + 1}`}
+                                key={tab}
+                                value={tab}
                                 className={`h-full w-full absolute top-0 left-0 ${
-                                    activeTab === `comic0${index + 1}`
+                                    activeTab === tab
                                         ? styles.fadeIn
                                         : "opacity-0 pointer-events-none"
                                 }`}
                             >
-                                <CarouselComponent imagePaths={imagePaths[`carousel/img/${comic}`] || []} />
+                                <CarouselComponent imagePaths={imagePaths[`carousel/img/${tab}`] || []} />
                             </TabsContent>
                         ))}
                     </div>

@@ -15,7 +15,7 @@ export async function loadImagePaths(folder: string): Promise<string[]> {
 }
 
 export async function loadAllImagePaths(): Promise<{ [key: string]: string[] }> {
-    const folders = ['carousel/img/comic-01', 'carousel/img/comic-02', 'carousel/img/comic-03', 'carousel/img/comic-04'];
+    const folders = ['carousel/img/techne', 'carousel/img/transmission', 'carousel/img/community', 'carousel/img/dominion'];
     const imagePaths: { [key: string]: string[] } = {};
 
     for (const folder of folders) {
