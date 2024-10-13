@@ -79,7 +79,7 @@ export default function CarouselPage() {
                     href="https://github.com/pentcle/playground/tree/main/src/app/carousel"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 underline"
+                    className="text-white underline"
                 >
                     GitHub
                 </a>
