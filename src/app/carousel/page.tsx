@@ -9,6 +9,7 @@ export default function CarouselPage() {
     const [activeTab, setActiveTab] = useState("techne");
     const [imagePaths, setImagePaths] = useState<{[key: string]: string[]}>({});
     const [isLoading, setIsLoading] = useState(true);
+    const [showGlow, setShowGlow] = useState(false); // Initialize showGlow
 
     useEffect(() => {
         const fetchImagePaths = async () => {
@@ -20,6 +21,14 @@ export default function CarouselPage() {
         fetchImagePaths();
     }, []);
 
+    useEffect(() => {
+        // Toggle the glow effect when the active tab changes
+        setShowGlow(true);
+        const timeout = setTimeout(() => setShowGlow(false), 1000); // Example: glow fades out after 1 second
+
+        return () => clearTimeout(timeout); // Cleanup timeout on unmount or when activeTab changes
+    }, [activeTab]);
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -27,8 +36,9 @@ export default function CarouselPage() {
     const tabs = ["techne", "transmission", "community", "dominion"];
 
     return (
-        <article className="h-screen flex flex-col">
-            <div className="flex-grow flex flex-col overflow-hidden p-4">
+        <article className="h-screen flex flex-col relative overflow-hidden bg-[#20282F]">
+            <div className={`${styles.backgroundGlow} ${showGlow ? styles.glowFadeIn : styles.glowFadeOut}`}></div>
+            <div className="flex-grow flex flex-col overflow-hidden p-4 relative z-10">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col h-full w-full">
                     <TabsList className="w-full flex justify-center shrink-0 mb-4">
                         {tabs.map((tab) => (
@@ -43,9 +53,7 @@ export default function CarouselPage() {
                                 key={tab}
                                 value={tab}
                                 className={`h-full w-full absolute top-0 left-0 ${
-                                    activeTab === tab
-                                        ? styles.fadeIn
-                                        : "opacity-0 pointer-events-none"
+                                    activeTab === tab ? styles.fadeIn : "opacity-0 pointer-events-none"
                                 }`}
                             >
                                 <CarouselComponent imagePaths={imagePaths[`carousel/img/${tab}`] || []} />
