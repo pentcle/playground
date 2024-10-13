@@ -1,8 +1,10 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { CarouselComponent } from "./CarouselComponent";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { loadAllImagePaths } from "./utils/loadImages";
+import styles from "./Carousel.module.css";
 
 export default function CarouselPage() {
     const [activeTab, setActiveTab] = useState("comic01");
@@ -40,7 +42,7 @@ export default function CarouselPage() {
                                 value={`comic0${index + 1}`}
                                 className={`h-full w-full absolute top-0 left-0 ${
                                     activeTab === `comic0${index + 1}`
-                                        ? "animate-fadeIn"
+                                        ? styles.fadeIn
                                         : "opacity-0 pointer-events-none"
                                 }`}
                             >
