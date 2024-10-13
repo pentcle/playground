@@ -25,13 +25,9 @@ export function CarouselComponent({imagePaths}: { imagePaths: string[] }) {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <div className={"sm:hidden block"}>
+                <div className={"opacity-70"}>
                     <CarouselPrevious className="left-0"/>
                     <CarouselNext className="right-0"/>
-                </div>
-                <div className={"hidden sm:block"}>
-                    <CarouselPrevious className="left-2"/>
-                    <CarouselNext className="right-2"/>
                 </div>
             </Carousel>
         </div>
