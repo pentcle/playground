@@ -9,6 +9,16 @@ const config: Config = {
     darkMode: ["class"],
     theme: {
         extend: {
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '10%': { opacity: '0.7' },
+                    '100%': { opacity: '1' },
+                }
+            },
+            animation: {
+                fadeIn: 'fadeIn 6000ms cubic-bezier(0.11, 0, 0.5, 0)',
+            },
             colors: {
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
