@@ -42,7 +42,7 @@ export default function CarouselPage() {
     const tabs = ["techne", "transmission", "community", "dominion"];
 
     return (
-        <article className="h-screen flex flex-col relative overflow-hidden bg-[#20282F]">
+        <article className="h-screen flex flex-col relative overflow-hidden bg-[#222A30]">
             <div
                 className={`${styles.backgroundGlow} ${showGlow ? styles.glowFadeIn : styles.glowFadeOut}`}
                 style={{
